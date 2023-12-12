@@ -36,3 +36,4 @@ Route::post('/updatedPost',[connectController::class,'updatedPost']);
 Route::get('/delete/{id}',[connectController::class,'del']);
 Route::post('/addcommand/{id}',[connectController::class,"comment"]);
 Route::get('/findpost/{id}',[connectController::class,"findpost"]);
+Route::get('/deletecomment/{id}',[connectController::class,"commentdelete"]);
