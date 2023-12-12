@@ -16,7 +16,7 @@
   </style>
 </head>
 <body class="bg-info">
-
+<div>
 @foreach($find as $finds)
 <div class="container mt-3">
     <h2>{{$finds->title}}</h2>
@@ -24,12 +24,19 @@
         <img class="card-img-top" src="{{asset('storage/file/'.$finds->image)}}" alt="{{$finds->title}}" style="width:100%" height="280px">
         <div class="card-body">
         <p class="card-text">{{$finds->content}}</p>
-        <form action="addcommand/{{$finds->id}}" method="post">
-            @csrf
-            <textarea name="command" id="comm" cols="30" rows="1"></textarea><br>
-            <input type="submit" value="comment">
-            
+        <form action="/addcommand/{{$finds->id}}" method="post">
+              @csrf
+              <textarea name="comment" id="comm" cols="30" rows="1"></textarea><br>
+              <input type="submit" value="comment">
         </form>
+        @foreach($comments as $com)  
+          @foreach($user as $users)
+              @if($com->user_id == $users->id)
+                <a href="/deletecomment/{{$com->id}}">  <span>{{$users->name}} =></span></a>
+              @endif
+          @endforeach
+          <span class="ms-3">{{$com->comment}}</span> <br>
+        @endforeach
     </div>
        
 </div>
