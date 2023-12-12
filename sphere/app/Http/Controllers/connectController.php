@@ -59,8 +59,16 @@ class connectController extends Controller
         $comments->save();
         return back();
     }
-    public function findpost($id){
+     public function findpost($id){
+        $item = connection::get();
+        $comments = comment::get();
+        $user = User::get();
         $find =  connection::get()->where("user_id","=",$id);
-        return view('sphereblades.userpost',compact('find'));
+        return view('sphereblades.userpost',compact('find','item','comments','user'));
+    }
+    public function commentdelete($id){
+        $comments = comment::find($id);
+        $comments ->delete();
+        return back();
     }
 }
