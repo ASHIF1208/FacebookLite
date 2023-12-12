@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -13,7 +15,8 @@
                 {{ __('Dashboard') }}
             </h2>
         </x-slot>
-        @foreach($item as $items)
+        <a class="btn btn-primary" href="/add"><button>Add Post</button></a>
+        @foreach($item as $items)   
 <div class="container mt-3">
     <h2>{{$items->title}}</h2>
     <div class="card" style="width:400px">
